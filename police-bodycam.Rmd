@@ -1,0 +1,41 @@
+---
+title: "police-bodycam"
+author: "Yuriko Schumacher"
+date: "3/16/2021"
+output: html_document
+---
+```{r}
+library(tidyverse)
+# install.packages("mapdeck")
+library(mapdeck)
+library(RColorBrewer)
+```
+
+```{r}
+bodycam.raw<- read_csv("data/bodycam-footage.csv", na = "na")
+bodycam <- bodycam.raw %>% 
+  select(camera.id,
+         start.est,
+         end.est,
+         lat, long,
+         location.accuracy) %>% 
+  drop_na()
+
+key <- "pk.eyJ1IjoieXVyaWtvLXNjaHVtYWNoZXIiLCJhIjoiY2ttNDVoemgyMDFjcDJxdXM5cWx5d3FzdiJ9.Ajc4ZM1IbKLbRPSkrBJNrA"
+mapdeck( token = key, style = mapdeck_style("dark")) %>% 
+  add_scatterplot(
+    data = bodycam
+    , lat = "lat"
+    , lon = "long"
+    , radius = 15
+    , fill_colour = "camera.id"
+    , fill_opacity = 0.8
+    , stroke_width = 1
+    , stroke_colour = "#eee"
+    , layer_id = "scatter_layer"
+  )
+
+
+
+```
+
