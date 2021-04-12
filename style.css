@@ -1,0 +1,207 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+:root {
+	--yellow: #ffff00;
+	--blue: #7df9ff;
+	--pink: #ff29c9;
+}
+
+html,
+body {
+	padding: 0px;
+	margin: 0px;
+	background: black;
+	color: white;
+	font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+p {
+	font-family: "Noto Serif", serif;
+}
+
+h3 {
+	font-size: 1.5em;
+}
+
+a,
+a:hover,
+a:visited {
+	color: #0071bc;
+}
+
+/* ---------- HERO SECTION ---------- */
+#hero {
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.hero__img {
+	position: absolute;
+}
+
+.title {
+	width: 30%;
+	text-align: center;
+}
+
+.fa-angle-down {
+	font-size: 1.5em;
+	animation-delay: 5s;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	transform-origin: bottom;
+	animation-name: fa-angle-down;
+	animation-timing-function: ease;
+}
+
+@keyframes fa-angle-down {
+	0% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+/* ---------- INTRO SECTION ---------- */
+article {
+	margin: 300px auto 300px;
+	width: 80%;
+	max-width: 600px;
+}
+
+.byline {
+	font-family: "Noto sans", sans-serif;
+	font-weight: bold;
+	margin-bottom: 2.5em;
+}
+
+/* ---------- MAP SECTION ---------- */
+#map {
+	height: 85vh;
+	/* max-height: 1500px; */
+	width: 98vw;
+	position: sticky;
+	left: 0;
+	top: 15vh;
+}
+#header {
+	margin: auto;
+	width: 100%;
+	position: relative;
+	z-index: 5;
+}
+#header h1,
+#header h2,
+#header p {
+	margin: 0;
+	padding: 2vh 2vw;
+	text-align: center;
+}
+#footer {
+	width: 100%;
+	min-height: 5vh;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	text-align: center;
+	line-height: 25px;
+	position: relative;
+	z-index: 5;
+}
+#features {
+	padding-top: 10vh;
+	padding-bottom: 10vh;
+}
+.hidden {
+	visibility: hidden;
+}
+.centered {
+	width: 50vw;
+	margin: 0 auto;
+}
+.lefty {
+	width: 33vw;
+	margin-left: 5vw;
+}
+.righty {
+	width: 33vw;
+	margin-left: 62vw;
+}
+.fully {
+	width: 100%;
+	margin: auto;
+}
+
+.dark {
+	color: white;
+	background-color: rgba(0, 0, 0, 0.6);
+}
+
+.step {
+	padding-bottom: 50vh;
+	/* margin-bottom: 10vh; */
+	opacity: 0.25;
+}
+.step.active {
+	opacity: 0.9;
+}
+
+.step div {
+	padding: 25px 50px;
+	line-height: 25px;
+}
+
+.step div:first-of-type {
+	margin-top: 300px;
+}
+
+.step img {
+	width: 100%;
+}
+
+.highlighter::before,
+.highlighter::after {
+	content: "　";
+	font-size: 0.5em;
+}
+
+.yellow-highlighter {
+	background: rgb(255, 255, 0, 0.5);
+}
+
+.blue-highlighter {
+	background: rgb(125, 249, 255, 0.5);
+}
+
+.pink-highlighter {
+	background: rgb(255, 41, 201, 0.5);
+}
+
+.gray-highlighter {
+	background: rgba(210, 210, 210, 0.5);
+}
+
+@media (max-width: 750px) {
+	.centered,
+	.lefty,
+	.righty,
+	.fully {
+		width: 90vw;
+		margin: 0 auto;
+	}
+}
+
+/* Fix issue on mobile browser where scroll breaks  */
+.mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan,
+.mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan
+	.mapboxgl-canvas {
+	touch-action: unset;
+}

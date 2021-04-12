@@ -7,19 +7,42 @@ output: html_document
 ```{r}
 library(tidyverse)
 # install.packages("mapdeck")
+library(lubridate)
 library(mapdeck)
-library(RColorBrewer)
 ```
 
 ```{r}
 bodycam.raw<- read_csv("data/bodycam-footage.csv", na = "na")
 bodycam <- bodycam.raw %>% 
+  mutate(start.utc = paste(date.utc,start.utc),
+         end.utc = paste(date.utc,end.utc)) %>% 
   select(camera.id,
-         start.est,
-         end.est,
+         start.utc,
+         end.utc,
          lat, long,
          location.accuracy) %>% 
-  drop_na()
+  mutate(start.est = mdy_hms(start.utc) - hours(4),
+         end.est = mdy_hms(end.utc) - hours(4),
+         start.time = str_sub(as.character(start.est), start = 12),
+         end.time = str_sub(as.character(end.est), start = 12)
+         ) %>% 
+  select(-start.utc, -end.utc, -start.est, -end.est)
+
+bodycam.sketch <- bodycam %>% filter(camera.id == "X81416368") %>% 
+  filter(location.accuracy == "accurate")
+
+mapdeck( token = key, style = mapdeck_style("dark")) %>% 
+  add_scatterplot(
+    data = bodycam.sketch
+    , lat = "lat"
+    , lon = "long"
+    , radius = 15
+    , fill_colour = "#adb33d"
+    , fill_opacity = 0.8
+    , stroke_width = 1
+    , stroke_colour = "#eee"
+    , layer_id = "scatter_layer"
+  )
 
 key <- "pk.eyJ1IjoieXVyaWtvLXNjaHVtYWNoZXIiLCJhIjoiY2ttNDVoemgyMDFjcDJxdXM5cWx5d3FzdiJ9.Ajc4ZM1IbKLbRPSkrBJNrA"
 mapdeck( token = key, style = mapdeck_style("dark")) %>% 
