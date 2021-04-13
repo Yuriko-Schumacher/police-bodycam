@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Mapbox Storytelling</title>
+		<title>Boston Police body cam footage</title>
 		<meta
 			name="viewport"
 			content="initial-scale=1,maximum-scale=1,user-scalable=no"
@@ -18,23 +18,24 @@
 			href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 		/>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/6.5.0/d3.min.js"></script>
+
 		<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
 		<script src="https://unpkg.com/scrollama"></script>
 	</head>
 	<body>
 		<div id="hero">
 			<div class="title">
-				<h1>
-					Moments captured by police body camera on the night of May
-					31st last year, traced
-				</h1>
+				<h2>
+					Boston Police body cam footage shows confrontations during
+					the protests following the death of George Floyd
+				</h2>
 				<p>
-					Demonstrations after the death of George Floyed went violent
-					in downtown Boston that night.
+					Demonstrations in downtown Boston on May 31, 2020 turned
+					into violent clashes between protesters and police.
 				</p>
 				<p>
-					I tracked intensive moments between protesters and police
-					that night, captured by body camera footage revealed by
+					I tracked key moments between protesters and police that
+					night using body camera footage revealed by
 					<a
 						href="https://theappeal.org/bodycam-video-shows-mob-mentality-of-boston-police-who-responded-to-george-floyd-protests-lawyer-says/"
 						target="_blank"
@@ -54,36 +55,30 @@
 					downtown Boston to protest against police brutality.
 				</p>
 				<p>
-					Peaceful demonstrations turned violent as the night went on,
-					while police officers went out in force to control the
-					situation.
-				</p>
-				<p>
-					News outlets and witnesses widely reported there was an
+					Peaceful demonstrations turned into violent clashes as the
+					night went on, with news outlets and witnesses reporting an
 					extensive use of tear gas, pepper spray and physical
 					violence by the police.
 				</p>
 				<p>
-					The Appeal, an online news and commentary website about the
-					legal and social justice system, exclusively obtained a copy
-					of Boston Police officers’ body camera footage on the night
-					of May 31.
-				</p>
-				<p>
-					In December 2020, The Appeal reported that those footage
-					showed “police officers bragging about attacking protesters
-					and multiple instances of excessive force and the liberal
-					use of pepper spray.”
+					<a
+						href="https://theappeal.org/bodycam-video-shows-mob-mentality-of-boston-police-who-responded-to-george-floyd-protests-lawyer-says/"
+						target="_blank"
+						>The Appeal</a
+					>, a news and commentary website about the justice system,
+					exclusively obtained a copy of Boston Police officers’ body
+					camera footage.
 				</p>
 			</article>
 		</div>
 		<div id="mapbox">
+			<div id="chart"></div>
 			<div id="map"></div>
 			<div id="story"></div>
+			<div id="time"></div>
 		</div>
-
-		<script src="scripts/script.js"></script>
 		<script src="scripts/config.js"></script>
 		<script src="scripts/setup.js"></script>
+		<script src="scripts/script.js"></script>
 	</body>
 </html>

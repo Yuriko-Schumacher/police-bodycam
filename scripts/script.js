@@ -1,7 +1,7 @@
 const windowH = document.querySelector("#hero").clientHeight;
 const windowW = document.querySelector("#hero").clientWidth;
 
-// populate hero pictures
+// ---------- HERO PICTURES ----------
 const $hero = d3.select("#hero");
 const heroImages = [
 	{
@@ -136,4 +136,79 @@ heroImages.forEach((img, index) => {
 		.duration(500)
 		.delay(index * 150)
 		.style("opacity", 1);
+});
+
+// -------------------- TIMELINE CHART ---------------------
+
+const $chart = d3.select("#chart");
+const size = { w: windowW, h: 100 };
+const margin = { t: 40, r: windowW * 0.1, b: 30, l: windowW * 0.1 };
+const timeSvg = $chart
+	.append("svg")
+	.attr("width", size.w)
+	.attr("height", size.h);
+
+const containerG = timeSvg.append("g").classed("time-container", true);
+
+console.log(size.h - margin.b);
+
+const categories = ["protester", "BPD_tweets", "bodycam"];
+const parseTime = d3.timeParse("%Y-%m-%dT%H:%M:%SZ");
+
+d3.csv("data/bodycam-merged.csv", function (d) {
+	d.parsedTime = parseTime(d.timeToPerse);
+	return d;
+}).then(function (data) {
+	console.log(data);
+	const filteredData = data.filter((d) => d.category !== "mbta");
+
+	// CREATE SCALE
+	const xScale = d3
+		.scaleTime()
+		.domain(d3.extent(filteredData, (d) => d.parsedTime))
+		.range([margin.l, size.w - margin.r]);
+
+	const yScale = d3
+		.scaleBand()
+		.domain(categories)
+		.range([size.h - margin.b, margin.t]);
+
+	const colorScale = d3
+		.scaleOrdinal()
+		.domain(categories)
+		.range(["#ff29c9", "#7df9ff", "#ffff00"]);
+
+	// DRAW X AXIS
+	const xAxis = d3.axisBottom(xScale).tickFormat(d3.timeFormat("%I %p"));
+	containerG
+		.append("g")
+		.classed("x-axis", true)
+		.call(xAxis)
+		.attr("transform", `translate(0, ${size.h - margin.b})`);
+
+	// DRAW HORIZONTAL LINES
+	categories.forEach((d) => {
+		containerG
+			.append("g")
+			.classed("horizontal-lines", true)
+			.append("line")
+			.attr("x1", margin.l)
+			.attr("y1", yScale(d))
+			.attr("x2", size.w - margin.r)
+			.attr("y2", yScale(d))
+			.attr("stroke", "white")
+			.attr("stroke-width", 1);
+	});
+
+	// PLACE DOTS
+	containerG
+		.selectAll("circle")
+		.data(filteredData)
+		.join("circle")
+		.classed("timeCircles", true)
+		.attr("cx", (d) => xScale(d.parsedTime))
+		.attr("cy", (d) => yScale(d.category))
+		.attr("r", 5)
+		.attr("fill", (d) => colorScale(d.category))
+		.attr("fill-opacity", 0.3);
 });

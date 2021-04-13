@@ -17,7 +17,7 @@ const config = {
 			hidden: false,
 			title: "The night of May 31",
 			description:
-				"That night, <span class='highlighter pink-highlighter'>peaceful protests</span> ended a little before 9 p.m. Throughout the night, Boston Police Department <span class='highlighter blue-highlighter'>posted a series of tweets,</span> asking for people to go home.<br><br><span class='highlighter gray-highlighter'>Trains were bypassing stations</span> around the downtown area.<br><br>The chart above shows the timeline of these and timestamps of <span class='highlighter yellow-highlighter'>BPD’s body camera footage</span> made available.",
+				"<span class='highlighter pink-highlighter'>Peaceful protests</span> ended a little before 9 p.m.<br><br>Throughout the night, Boston Police Department posted <span class='highlighter blue-highlighter'>a series of tweets,</span> asking for people to go home.<br><br>The chart above shows the timeline of these and the <span class='highlighter yellow-highlighter'>BPD’s body camera footage</span>.",
 			location: {
 				center: [-71.03734, 42.35052],
 				zoom: 12,
@@ -47,7 +47,7 @@ const config = {
 			hidden: false,
 			title: "",
 			description:
-				"There were a few demonstrations organized on that day. One of them, organized by Black Boston, marched from Nubian Square up to the State House.<br><br>Hodan Hashi, a founder of Black Boston, said more than 20,000 people were estimated to participate.",
+				"Organizers of one march, <a href='https://www.blackboston.org/' target='_blank'>Black Boston</a>, estimate that more than 20,000 people marched from Nubian Square to the State House.<br><br>At 6:30 p.m., <span class='highlighter pink-highlighter'>the crowds started heading north.</span><br><br>About the same time, <span class='highlighter blue-highlighter'>BPD tweets asked them</span> for a safe and peaceful demonstration.",
 			location: {
 				center: [-71.03734, 42.35052],
 				zoom: 12,

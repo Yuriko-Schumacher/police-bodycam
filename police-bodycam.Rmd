@@ -28,6 +28,30 @@ bodycam <- bodycam.raw %>%
          ) %>% 
   select(-start.utc, -end.utc, -start.est, -end.est)
 
+
+bodycam.raw<- read_csv("data/bodycam-merged.csv", na = "NA")
+bodycam <- bodycam.raw %>% 
+  mutate(timeCombined = paste(date, time)) %>% 
+  mutate(parsedTime = mdy_hms(timeCombined)) %>% 
+  select(category, lat, long, comment, parsedTime)
+
+write_csv(bodycam, "data/bodycam-merged.csv")
+
+bodycam <- bodycam.raw %>% 
+  mutate(start.utc = paste(date.utc,start.utc),
+         end.utc = paste(date.utc,end.utc)) %>% 
+  select(camera.id,
+         start.utc,
+         end.utc,
+         lat, long,
+         location.accuracy) %>% 
+  mutate(start.est = mdy_hms(start.utc) - hours(4),
+         end.est = mdy_hms(end.utc) - hours(4),
+         start.time = str_sub(as.character(start.est), start = 12),
+         end.time = str_sub(as.character(end.est), start = 12)
+         ) %>% 
+  select(-start.utc, -end.utc, -start.est, -end.est)
+
 bodycam.sketch <- bodycam %>% filter(camera.id == "X81416368") %>% 
   filter(location.accuracy == "accurate")
 
