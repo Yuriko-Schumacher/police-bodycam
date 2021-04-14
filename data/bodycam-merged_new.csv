@@ -1,0 +1,30 @@
+category,date,time,lat,long,step,place,src,location,comment
+Peaceful Protest,5/31/2020,18:30:00,42.329842,-71.08446,step-2,NA,NA,Dudley Station,Protesters start marching
+BPD Tweets/News,5/31/2020,18:32,NA,NA,step-2,NA,https://twitter.com/bostonpolice/status/1267222510145323008,NA,BPD asks for a safe and peaceful demonstration
+Peaceful Protest,5/31/2020,20:27,42.357452,-71.063388,step-3,NA,NA,State House,Protesters arrive the State House
+Peaceful Protest,5/31/2020,20:52,42.357452,-71.063388,step-3,NA,NA,State House,Peaceful protest end
+Bodycam footage,5/31/2020,21:11:04,42.35538,-71.0604,step-4,1,assets/video_ready/01.mp4,Downtown Crossing station,An officer sprays an elderly protester
+BPD Tweets/News,5/31/2020,21:14,NA,NA,NA,NA,https://twitter.com/bostonpolice/status/1267263341912887296,NA,BPD asks protesters to refrain from throwing things
+Bodycam footage,5/31/2020,21:16:56,42.35616,-71.06223,step-5,1,assets/video_ready/02.mp4,Park Street station,Many officers are seen pushing protesters to the corner
+Bodycam footage,5/31/2020,21:21:13,42.35653,-71.062,step-5,2,assets/video_ready/03.mp4,Tremont St.,"An officer says, ""Start spraying the fuckers."""
+Bodycam footage,5/31/2020,21:23:23,42.35525,-71.06326,step-6-1,1,assets/video_ready/04.mp4,Tremont St.,"Group of officers approach the protesters, with one officer widely spraying them"
+Bodycam footage,5/31/2020,21:26:45,42.35511,-71.06336,step-6-1,2,assets/video_ready/05.mp4,Tremont St.,Multiple bike patrol officers run towards a protester
+Bodycam footage,5/31/2020,21:29:13,42.35432,-71.06174,step-6-2,1,assets/video_ready/06.mp4,Washington St. & West St.,An officer pulls a protester's clothing
+BPD Tweets/News,5/31/2020,21:32,NA,NA,step-7,NA,https://twitter.com/bostonpolice/status/1267267653984452608,NA,BPD asks protesters to refrain from hurting officers
+BPD Tweets/News,5/31/2020,21:40,NA,NA,step-7,NA,https://twitter.com/bostonpolice/status/1267269715275198464,NA,BPD asks protesters to vacate the area
+Bodycam footage,5/31/2020,21:44:44,42.35387,-71.06217,step-8-1,1,assets/video_ready/07.mp4,Washington St. & Ave de Lafayette,Multiple officers spray the protesters
+Bodycam footage,5/31/2020,21:48:40,42.35604,-71.05988,step-8-2,1,assets/video_ready/08.mp4,North of Downtown Crossing station,An officer sprays a protester from a close distance
+Bodycam footage,5/31/2020,21:48:40,42.35625,-71.0596,step-8-2,2,assets/video_ready/09.mp4,North of Downtown Crossing station,An officer punches a male protester
+Bodycam footage,5/31/2020,21:52:44,42.35658,-71.05919,step-9,1,assets/video_ready/10.mp4,Washington St.,"An officer says, ""I wanna hit this asshole."""
+Bodycam footage,5/31/2020,21:56:04,42.35743,-71.05836,step-9,2,assets/video_ready/11.mp4,Washington St.,Protesters scream and run away form police
+BPD Tweets/News,5/31/2020,21:59,NA,NA,step-9,NA,https://twitter.com/bostonpolice/status/1267274567388626947,NA,"BPD tweets protesters ""have surrendered the moral high ground."""
+Bodycam footage,5/31/2020,22:08:06,42.35702,-71.06143,step-10,1,assets/video_ready/12.mp4,Trenmont St.,An officer pushes a protester down
+Bodycam footage,5/31/2020,22:11:12,42.35709,-71.06136,step-10,2,assets/video_ready/13.mp4,Trenmont St.,Officers chase protesters
+Bodycam footage,5/31/2020,22:20:12,42.35551,-71.06067,step-11,1,assets/video_ready/14.mp4,Downtown Crossing station,An officer talks about using a police vehicle to attack demonstrators
+BPD Tweets/News,5/31/2020,22:32,NA,NA,step-11,NA,https://twitter.com/bostonpolice/status/1267282825881010176,NA,"BPD stresses the ""officers are fighting to protect"" the city"
+BPD Tweets/News,5/31/2020,22:37,NA,NA,step-11,NA,https://twitter.com/bostonpolice/status/1267284115235184640,NA,BPD again urges protesters to go home
+Bodycam footage,5/31/2020,22:43:16,42.35662,-71.06211,step-12,1,assets/video_ready/15.mp4,North of Boston Common,A protester taunts officers
+Bodycam footage,5/31/2020,22:44:15,42.35647,-71.06207,step-12,2,assets/video_ready/16.mp4,Park Street station,An officer pushes a protester down
+Bodycam footage,5/31/2020,23:34:17,42.35541495,-71.0604868,NA,1,assets/video_ready/18.mp4,Downtown Crossing station,An officer hands another officer a necktie
+BPD Tweets/News,5/31/2020,23:48,NA,NA,NA,NA,https://twitter.com/bostonpolice/status/1267302031280222212,NA,BPD asks protesters to vacate the area and leave the city
+BPD Tweets/News,6/1/2020,NA,NA,NA,step-13,NA,https://bpdnews.com/news/2020/6/1/bpd-confirms-fifty-three-arrests-made-and-one-summons-issued-following-protests-in-boston,NA,BPD confirms 53 arrests on the night of May 31st

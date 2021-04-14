@@ -29,11 +29,11 @@ bodycam <- bodycam.raw %>%
   select(-start.utc, -end.utc, -start.est, -end.est)
 
 
-bodycam.raw<- read_csv("data/bodycam-merged.csv", na = "NA")
+bodycam.raw<- read_csv("data/bodycam-merged_new.csv", na = "NA")
 bodycam <- bodycam.raw %>% 
   mutate(timeCombined = paste(date, time)) %>% 
-  mutate(parsedTime = mdy_hms(timeCombined)) %>% 
-  select(category, lat, long, comment, parsedTime)
+  mutate(timeToPerse = mdy_hms(timeCombined)) %>% 
+  select(category, lat, long, step, place, src, location, comment, timeToPerse)
 
 write_csv(bodycam, "data/bodycam-merged.csv")
 

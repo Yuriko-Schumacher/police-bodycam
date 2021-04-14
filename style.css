@@ -97,7 +97,35 @@ article {
 	opacity: 0.4;
 }
 
+.tooltip {
+	font-family: "Noto sans", sans-serif;
+}
+
+/* ---------- VIDEO ---------- */
+
+#video {
+	width: 500px;
+	position: sticky;
+	top: 17vh;
+	left: 50px;
+}
+
+video {
+	border: 10px solid rgb(255, 255, 0, 0.3);
+}
+
+.video-explore {
+	transform: translate(50vw, 30vh);
+}
+
 /* ---------- MAP SECTION ---------- */
+/* #time {
+	position: sticky;
+	left: 100;
+	top: 20vh;
+	background: rgba(0, 0, 0, 0.6);
+} */
+
 #map {
 	height: 85vh;
 	/* max-height: 1500px; */
@@ -114,12 +142,12 @@ article {
 	visibility: hidden;
 }
 .righty {
-	width: 33vw;
-	margin-left: 62vw;
+	width: 33%;
+	margin-left: 62%;
 }
 .dark {
 	color: white;
-	background-color: rgba(0, 0, 0, 0.6);
+	background-color: rgba(0, 0, 0, 0.7);
 }
 
 .step {
@@ -134,10 +162,6 @@ article {
 .step div {
 	padding: 25px 50px;
 	line-height: 25px;
-}
-
-.step div:first-of-type {
-	margin-top: 200px;
 }
 
 .step img {
@@ -171,7 +195,7 @@ article {
 	.lefty,
 	.righty,
 	.fully {
-		width: 90vw;
+		width: 90%;
 		margin: 0 auto;
 	}
 }
