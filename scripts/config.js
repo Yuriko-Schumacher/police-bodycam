@@ -520,7 +520,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 10:20 p.m., around Downtown Crossing station, an officer talks about <span class="highlighter yellow-highlighter">using a police vehicle to attack demonstrators.</span><br><br>BPD again posted two consecutive tweets, stressing the <span class="highlighter blue-highlighter"><a href="" target="_blank">"officers are fighting to protect"</a></span> the city.',
+				'At 10:20 p.m., around Downtown Crossing station, an officer talks about <span class="highlighter yellow-highlighter">using a police vehicle to attack demonstrators.</span><br><br>BPD again posted two consecutive tweets, stressing the <span class="highlighter blue-highlighter"><a href="https://twitter.com/bostonpolice/status/1267282825881010176" target="_blank">"officers are fighting to protect"</a></span> the city.',
 			location: {
 				center: [-71.06044, 42.35588],
 				zoom: 18.11,
