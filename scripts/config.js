@@ -75,7 +75,11 @@ function stepFn() {
 			.attr("muted", true)
 			.attr(
 				"width",
-				windowW < 1500 && videosToAdd.length > 1 ? 450 : 600
+				windowW < 1500 && videosToAdd.length > 1
+					? 450
+					: videosToAdd.length > 1
+					? 600
+					: 800
 			);
 		videoEl
 			.append("source")
