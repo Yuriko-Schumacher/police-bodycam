@@ -25,6 +25,17 @@ const dotsG = d3.select(".time-container");
 const videoG = d3.select("#video").append("g").classed("video-container", true);
 
 function stepFn() {
+	dotsG
+		.selectAll("circle")
+		.classed("active-circles", false)
+		.attr("r", 5)
+		.attr("fill-opacity", 0.3);
+	d3.select("#step-14")
+		.select("div")
+		.classed("tooltip", false)
+		.html(
+			"<p>Click time stamps above to watch more video footage from the night.</p>"
+		);
 	// LIGHT AND DIM CIRCLES ON TIMELINE
 	currentStep = document.getElementsByClassName("active")[0].id;
 	let currentIndex = steps.findIndex((step) => step === currentStep);
@@ -76,7 +87,7 @@ function stepFn() {
 // ------------------- FOR LAST STEP --------------------
 
 function exploreMore() {
-	d3.select("#chart").style("z-index", 99);
+	d3.select("#step-15").select(".dark").style("padding", 0);
 	let dots = dotsG.selectAll("circle");
 	dots.style("cursor", "pointer");
 	let step14 = d3.select("#step-14").select("div");
@@ -87,20 +98,21 @@ function exploreMore() {
 
 	dots.on("mouseover", function (e, d) {
 		isClicked = false;
-		console.log(prevDot);
+		videoG.selectAll("video").remove();
 		if (prevDot !== undefined) {
 			prevDot
 				.attr("r", 5)
 				.attr("fill-opacity", 0.3)
 				.classed("dot-active", false);
-			if (prevDot.category !== "BPD Tweets/News") {
+			if (prevDot.category === "BPD Tweets/News") {
+				return;
+			} else {
 				let prevDotId = prevDot.attr("id");
 				map.setPaintProperty(prevDotId, "circle-opacity", 0);
 			}
 		}
 		let dot = d3.select(this);
 		dot.attr("r", 7).attr("fill-opacity", 1).classed("dot-active", true);
-		let id = dot.attr("id");
 		step14
 			.classed("tooltip", true)
 			.html(
@@ -110,7 +122,10 @@ function exploreMore() {
 					d.comment
 				}.</p>`
 			);
-		if (d.category !== "BPD Tweets/News") {
+		if (d.category === "BPD Tweets/News") {
+			return;
+		} else {
+			let id = dot.attr("id");
 			map.setPaintProperty(id, "circle-opacity", 1);
 		}
 	})
@@ -121,9 +136,11 @@ function exploreMore() {
 					.attr("fill-opacity", 0.3)
 					.classed("dot-active", false);
 				step14.html(
-					"<p><span class='highlighter yellow-highlighter'>Click time stamps above</span> to watch more video footage from the night.</p>"
+					"<p>Click time stamps above to watch more video footage from the night.</p>"
 				);
-				if (d.category !== "BPD Tweets/News") {
+				if (d.category === "BPD Tweets/News") {
+					return;
+				} else {
 					let id = d3.select(this).attr("id");
 					map.setPaintProperty(id, "circle-opacity", 0);
 				}
@@ -144,7 +161,9 @@ function exploreMore() {
 						d.comment
 					}.</p>`
 				);
-			if (d.category !== "BPD Tweets/News") {
+			if (d.category === "BPD Tweets/News") {
+				return;
+			} else {
 				let id = dot.attr("id");
 				map.setPaintProperty(id, "circle-opacity", 1);
 			}
@@ -160,16 +179,18 @@ function exploreMore() {
 					.append("video")
 					.attr("controls", true)
 					.attr("muted", true)
-					.attr(
-						"width",
-						windowW < 1500 && videosToAdd.length > 1 ? 600 : 800
-					);
+					.attr("width", windowW < 1500 ? 600 : 800);
 				videoEl
 					.append("source")
 					.attr("src", d.src)
 					.attr("type", "video/mp4");
 			}
 		});
+}
+
+function dummyStep() {
+	d3.select("#chart").style("z-index", 0);
+	videoG.selectAll("video").remove();
 }
 
 // -------------------- MAPBOX SCROLLYTELLING --------------------
@@ -200,6 +221,91 @@ const config = {
 					opacity: 0,
 					duration: 1,
 				},
+				{
+					layer: "step-3",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "protesters",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-4",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-5",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-6-1",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-6-2",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-8-1",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-8-2",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-9",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-10",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-11",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-12",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "T1",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "T2",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "T3",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "T4",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "T5",
+					opacity: 0,
+					duration: 1,
+				},
 			],
 			onChapterExit: [],
 		},
@@ -208,7 +314,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				"Organizers of one march, <a href='https://www.blackboston.org/' target='_blank'>Black Boston</a>, estimate that more than 20,000 people marched from Nubian Square to the State House.<br><br>At 6:30 p.m., <span class='highlighter pink-highlighter'>the crowds started heading north.</span><br><br>About the same time, <span class='highlighter blue-highlighter'>BPD tweets asked them</span> for a safe and peaceful demonstration.",
+				"Organizers of one march, <a href='https://www.blackboston.org/' target='_blank'>Black Boston</a>, estimate that more than 20,000 people marched from Nubian Square to the State House.<br><br>At 6:30 p.m., <span class='highlighter pink-highlighter'>the crowds started heading north.</span><br><br>About the same time, <span class='highlighter blue-highlighter'><a href='https://twitter.com/bostonpolice/status/1267222510145323008' target='_blank'>BPD tweets asked them</a></span> for a safe and peaceful demonstration.",
 			location: {
 				center: [-71.03734, 42.35052],
 				zoom: 12,
@@ -270,7 +376,7 @@ const config = {
 			description:
 				"At 9:11 pm, an officer in  front of the Downtown Crossing station is seen <span class='highlighter yellow-highlighter'>spraying an elderly male protester.</span>",
 			location: {
-				center: [-71.06031, 42.35573],
+				center: [-71.06044, 42.35573],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: 0,
@@ -314,7 +420,7 @@ const config = {
 			description:
 				'At 9:16 p.m., in front of the Park Street station exit, <span class="highlighter yellow-highlighter">many officers are seen pushing people to the corner.</span><br><br>Across the street, at 9:21 p.m., an officer says, <span class="highlighter yellow-highlighter">"Start spraying the fuckers."</span>',
 			location: {
-				center: [-71.06237, 42.35655],
+				center: [-71.06213, 42.35633],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: -140.71,
@@ -348,7 +454,7 @@ const config = {
 			description:
 				'At 9:23 p.m., a large group of officers is seen approaching the protesters on Tremont Street, with one officer <span class="highlighter yellow-highlighter">widely spraying the protesters.</span><br><br>At 9:26 p.m., multiple bike patrol officers <span class="highlighter yellow-highlighter">aggressively towards a protester</span> who was throwing things at police.',
 			location: {
-				center: [-71.06344, 42.35556],
+				center: [-71.0633, 42.3552],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: -140.71,
@@ -382,7 +488,7 @@ const config = {
 			description:
 				'On the other side of West Street, at 9:29 p.m., an officer is seen <span class="highlighter yellow-highlighter">pulling the clothing of a male protester</span>, with a woman screaming "Stop!"',
 			location: {
-				center: [-71.06178, 42.35454],
+				center: [-71.06179, 42.35414],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: -140.71,
@@ -414,7 +520,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'By this time, trains are already bypassing Park Street and Downtown Crossing stations.<br><br><span style="font-size:0.8em;"> ❌ </span> signs on the map indicates T stations being bypassed at the time.<br><br>With the area turning into a battlefield, police post two tweets, <span class="highlighter blue-highlighter">urging people to vacate the area.</span>',
+				'By this time, trains are already bypassing Park Street and Downtown Crossing stations.<br><br><span style="font-size:0.8em;"> ❌ </span> signs on the map indicates T stations being bypassed at the time.<br><br>With the area turning into a battlefield, police post two tweets, <span class="highlighter blue-highlighter"><a href="https://twitter.com/bostonpolice/status/1267269715275198464" target="_blank">urging people to vacate the area.</a></span>',
 			location: {
 				center: [-71.05203, 42.3536],
 				zoom: 13.72,
@@ -455,7 +561,7 @@ const config = {
 			description:
 				'At 9:44 p.m. at the intersection of Washington Street and Ave de Lafayette, <span class="highlighter yellow-highlighter">multiple officers are seen spraying the protesters.</span>',
 			location: {
-				center: [-71.06208, 42.35386],
+				center: [-71.06229, 42.35405],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: 24,
@@ -526,7 +632,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 9:52 p.m. on Washington Street., an officer with a pepper spray on his hand says, <span class="highlighter yellow-highlighter">"I wanna hit this asshole."</span><br><br>At 9:56 p.m., protesters are seen <span class="highlighter yellow-highlighter">running away from the officers.</span><br><br>Around 10 p.m., BPD tweets that protestors "have <span class="highlighter blue-highlighter">surrendered the moral high ground."</span>',
+				'At 9:52 p.m. on Washington Street., an officer with a pepper spray on his hand says, <span class="highlighter yellow-highlighter">"I wanna hit this asshole."</span><br><br>At 9:56 p.m., protesters are seen <span class="highlighter yellow-highlighter">running away from the officers.</span><br><br>Around 10 p.m., BPD tweets that protestors "have <span class="highlighter blue-highlighter"><a href="https://twitter.com/bostonpolice/status/1267274567388626947" target="_blank">surrendered the moral high ground."</a></span>',
 			location: {
 				center: [-71.05885, 42.35672],
 				zoom: 18.11,
@@ -567,7 +673,7 @@ const config = {
 			description:
 				'Some more intense moments are captured on the camera. At 10:08 p.m., an officer approached the crowd and <span class="highlighter yellow-highlighter">pushed a protester down with a nightstick.</span><br><br>Another video taken at 10:11 p.m. shows an officer <span class="highlighter yellow-highlighter">chasing protesters with something in his right hand.</span>',
 			location: {
-				center: [-71.06137, 42.35678],
+				center: [-71.06143, 42.35715],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: 36,
@@ -609,9 +715,9 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 10:20 p.m., around Downtown Crossing station, an officer talks about <span class="highlighter yellow-highlighter">using a police vehicle to attack demonstrators.</span><br><br>BPD again posted two consecutive tweets, stressing the <span class="highlighter blue-highlighter">"officers are fighting to protect"</span> the city.',
+				'At 10:20 p.m., around Downtown Crossing station, an officer talks about <span class="highlighter yellow-highlighter">using a police vehicle to attack demonstrators.</span><br><br>BPD again posted two consecutive tweets, stressing the <span class="highlighter blue-highlighter"><a href="" target="_blank">"officers are fighting to protect"</a></span> the city.',
 			location: {
-				center: [-71.06023, 42.3553],
+				center: [-71.06044, 42.35588],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: 36,
@@ -674,11 +780,6 @@ const config = {
 					opacity: 0,
 					duration: 1,
 				},
-				{
-					layer: "bodycam-all",
-					opacity: 0,
-					duration: 1,
-				},
 			],
 			onChapterExit: [],
 		},
@@ -687,7 +788,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'BPD announced <span class="highlighter blue-highlighter">53 people were arrested</span> during the protest.<br><br>MBTA said by the end of the night, trains were bypassing twelve T stations around the area.',
+				'<a href="https://bpdnews.com/news/2020/6/1/bpd-confirms-fifty-three-arrests-made-and-one-summons-issued-following-protests-in-boston" target="_blank">BPD announced</a> <span class="highlighter blue-highlighter">53 people were arrested</span> during the protest.<br><br><a href="https://twitter.com/MBTA/status/1267265253022277635" target="_blank">MBTA said</a> by the end of the night, trains were bypassing twelve T stations around the area.',
 			location: {
 				center: [-71.05203, 42.3536],
 				zoom: 13.72,
@@ -729,8 +830,98 @@ const config = {
 					duration: 1,
 				},
 				{
-					layer: "bodycam-all",
-					opacity: 0.8,
+					layer: "0",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "2",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "3",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "4",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "6",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "7",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "8",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "9",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "10",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "13",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "15",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "16",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "17",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "19",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "20",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "21",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "24",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "25",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "26",
+					opacity: 0,
 					duration: 1,
 				},
 			],
@@ -752,11 +943,6 @@ const config = {
 			rotateAnimation: false,
 			callback: "exploreMore",
 			onChapterEnter: [
-				{
-					layer: "bodycam-all",
-					opacity: 0,
-					duration: 1,
-				},
 				{
 					layer: "T1",
 					opacity: 0.3,
@@ -783,6 +969,21 @@ const config = {
 					duration: 1,
 				},
 			],
+			onChapterExit: [],
+		},
+		{
+			id: "step-15",
+			alignment: "full",
+			location: {
+				center: [-71.05203, 42.3536],
+				zoom: 13.72,
+				pitch: 0,
+				bearing: 0,
+			},
+			mapAnimation: "flyTo",
+			rotateAnimation: false,
+			callback: "dummyStep",
+			onChapterEnter: [],
 			onChapterExit: [],
 		},
 	],

@@ -56,10 +56,21 @@ function Timeline() {
 			.domain(categories)
 			.range(["#ff29c9", "#7df9ff", "#ffff00"]);
 
-		let dotSel = this._selection.selectAll("circle").data(this._data);
+		let dotSel = this._selection.selectAll("a").data(this._data);
 
 		dotSel
-			.join("circle")
+			.join("a")
+			.attr("href", (d) => {
+				if (d.category === "BPD Tweets/News") {
+					return d.src;
+				}
+			})
+			.attr("target", (d) => {
+				if (d.category === "BPD Tweets/News") {
+					return "_blank";
+				}
+			})
+			.append("circle")
 			.attr("id", (d, i) => i)
 			.attr("data-category", (d) => d.category)
 			.attr("class", (d) => `${d.step}-circles`)

@@ -134,6 +134,6 @@ heroImages.forEach((img, index) => {
 		.style("top", `${(img.y / 1024) * windowH}px`)
 		.transition()
 		.duration(500)
-		.delay(index * 150)
+		.delay(index * 200 + 3000)
 		.style("opacity", 1);
 });

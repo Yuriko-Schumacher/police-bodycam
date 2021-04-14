@@ -26,10 +26,18 @@ h3 {
 	font-size: 1.5em;
 }
 
+p {
+	line-height: 1.6;
+}
+
 a,
-a:hover,
 a:visited {
-	color: #0071bc;
+	color: white;
+}
+
+a:hover {
+	color: #2c3065;
+	transition: 0.4s;
 }
 
 /* ---------- HERO SECTION ---------- */
@@ -90,6 +98,7 @@ article {
 	position: sticky;
 	left: 0;
 	top: 0;
+	z-index: 99;
 }
 
 .x-axis,
@@ -161,7 +170,6 @@ video {
 
 .step div {
 	padding: 25px 50px;
-	line-height: 25px;
 }
 
 .step img {
