@@ -22,17 +22,17 @@ const config = {
 			callback: "firstStep",
 			onChapterEnter: [
 				{
+					layer: "protesters",
+					opacity: 0,
+					duration: 1,
+				},
+				{
 					layer: "step-2",
 					opacity: 0,
 					duration: 1,
 				},
 				{
 					layer: "step-3",
-					opacity: 0,
-					duration: 1,
-				},
-				{
-					layer: "protesters",
 					opacity: 0,
 					duration: 1,
 				},
@@ -47,7 +47,7 @@ const config = {
 					duration: 1,
 				},
 				{
-					layer: "step-6-1",
+					layer: "step-6-1-1",
 					opacity: 0,
 					duration: 1,
 				},
@@ -223,7 +223,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 9:16 p.m., in front of the Park Street station exit, <span class="highlighter yellow-highlighter">many officers are seen pushing people to the corner.</span><br><br>Across the street, at 9:21 p.m., an officer says, <span class="highlighter yellow-highlighter">"Start spraying the fuckers."</span>',
+				'At 9:21 p.m. on Tremont Street, an officer says, <span class="highlighter yellow-highlighter">"Start spraying the fuckers."</span>',
 			location: {
 				center: [-71.06213, 42.35633],
 				zoom: 18.11,
@@ -245,7 +245,7 @@ const config = {
 					duration: 1,
 				},
 				{
-					layer: "step-6-1",
+					layer: "step-6-1-1",
 					opacity: 0,
 					duration: 1,
 				},
@@ -253,13 +253,13 @@ const config = {
 			onChapterExit: [],
 		},
 		{
-			id: "step-6-1",
+			id: "step-6-1-1",
 			alignment: "right",
 			title: "",
 			description:
-				'At 9:23 p.m., a large group of officers is seen approaching the protesters on Tremont Street, with one officer <span class="highlighter yellow-highlighter">widely spraying the protesters.</span><br><br>At 9:26 p.m., multiple bike patrol officers <span class="highlighter yellow-highlighter">aggressively towards a protester</span> who was throwing things at police.',
+				'At 9:23 p.m., a large group of officers is seen approaching the protesters on Tremont Street, with one officer <span class="highlighter yellow-highlighter">widely spraying the protesters.</span>',
 			location: {
-				center: [-71.0633, 42.3552],
+				center: [-71.06333, 42.35503],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: -140.71,
@@ -274,7 +274,41 @@ const config = {
 					duration: 1,
 				},
 				{
-					layer: "step-6-1",
+					layer: "step-6-1-1",
+					opacity: 1,
+					duration: 1,
+				},
+				{
+					layer: "step-6-1-2",
+					opacity: 0,
+					duration: 1,
+				},
+			],
+			onChapterExit: [],
+		},
+		{
+			id: "step-6-1-2",
+			alignment: "right",
+			title: "",
+			description:
+				'At 9:26 p.m., multiple bike patrol officers <span class="highlighter yellow-highlighter">aggressively run towards a protester</span> who was throwing things at police.',
+			location: {
+				center: [-71.06352, 42.35476],
+				zoom: 18.11,
+				pitch: 70,
+				bearing: -140.71,
+			},
+			mapAnimation: "flyTo",
+			rotateAnimation: false,
+			callback: "stepFn",
+			onChapterEnter: [
+				{
+					layer: "step-6-1-1",
+					opacity: 0,
+					duration: 1,
+				},
+				{
+					layer: "step-6-1-2",
 					opacity: 1,
 					duration: 1,
 				},
@@ -303,7 +337,7 @@ const config = {
 			callback: "stepFn",
 			onChapterEnter: [
 				{
-					layer: "step-6-1",
+					layer: "step-6-1-2",
 					opacity: 0,
 					duration: 1,
 				},
@@ -398,9 +432,9 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 9:48 p.m. just north of Downtown Crossing station, an officer is seen <span class="highlighter yellow-highlighter">spraying a protester from a very close distance,</span> while another officer is seen <span class="highlighter yellow-highlighter">punching a male protester in the stomach.</span>',
+				'At 9:48 p.m. just north of Downtown Crossing station, an officer is seen <span class="highlighter yellow-highlighter">punching a male protester in the stomach.</span>',
 			location: {
-				center: [-71.05975, 42.35607],
+				center: [-71.05958, 42.35645],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: 36,
@@ -437,9 +471,9 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 9:52 p.m. on Washington Street., an officer with a pepper spray on his hand says, <span class="highlighter yellow-highlighter">"I wanna hit this asshole."</span><br><br>At 9:56 p.m., protesters are seen <span class="highlighter yellow-highlighter">running away from the officers.</span><br><br>Around 10 p.m., BPD tweets that protestors "have <span class="highlighter blue-highlighter"><a href="https://twitter.com/bostonpolice/status/1267274567388626947" target="_blank">surrendered the moral high ground."</a></span>',
+				'At 9:52 p.m. on Washington Street., an officer with a pepper spray on his hand says, <span class="highlighter yellow-highlighter">"I wanna hit this asshole."</span><br><br>Around 10 p.m., BPD tweets that protestors "have <span class="highlighter blue-highlighter"><a href="https://twitter.com/bostonpolice/status/1267274567388626947" target="_blank">surrendered the moral high ground."</a></span>',
 			location: {
-				center: [-71.05885, 42.35672],
+				center: [-71.05886, 42.35708],
 				zoom: 18.11,
 				pitch: 70,
 				bearing: 36,
@@ -476,7 +510,7 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'Some more intense moments are captured on the camera. At 10:08 p.m., an officer approached the crowd and <span class="highlighter yellow-highlighter">pushed a protester down with a nightstick.</span><br><br>Another video taken at 10:11 p.m. shows an officer <span class="highlighter yellow-highlighter">chasing protesters with something in his right hand.</span>',
+				'Some more intense moments are captured on the camera. At 10:08 p.m., an officer approached the crowd and <span class="highlighter yellow-highlighter">pushed a protester down with a nightstick.</span>',
 			location: {
 				center: [-71.06143, 42.35715],
 				zoom: 18.11,
@@ -559,12 +593,12 @@ const config = {
 			alignment: "right",
 			title: "",
 			description:
-				'At 10:43 p.m., footage captured north of Boston Common showed a protester taunting officers, while <span class="highlighter yellow-highlighter">tear gas billows behind him.</span><br><br>One minute later, <span class="highlighter yellow-highlighter">an officer pushes a female protester down with a nightstick.</span>',
+				'At 10:44 p.m., footage captured in front of Park Street station exit showed <span class="highlighter yellow-highlighter">an officer pushing a female protester down with a nightstick.</span>',
 			location: {
-				center: [-71.06195, 42.35637],
+				center: [-71.06228, 42.35645],
 				zoom: 18.11,
 				pitch: 70,
-				bearing: 0,
+				bearing: -24.0,
 			},
 			mapAnimation: "flyTo",
 			rotateAnimation: false,
@@ -755,7 +789,7 @@ const config = {
 					duration: 1,
 				},
 				{
-					layer: "step-6-1",
+					layer: "step-6-1-1",
 					opacity: 0,
 					duration: 1,
 				},
@@ -794,6 +828,11 @@ const config = {
 					opacity: 0,
 					duration: 1,
 				},
+				{
+					layer: "bodycam-all",
+					opacity: 0,
+					duration: 1,
+				},
 			],
 			onChapterExit: [],
 		},
@@ -811,7 +850,7 @@ const config = {
 			},
 			mapAnimation: "flyTo",
 			rotateAnimation: false,
-			callback: "exploreMore",
+			callback: "exploreMoreVideos",
 			onChapterEnter: [
 				{
 					layer: "T1",
@@ -836,6 +875,11 @@ const config = {
 				{
 					layer: "T5",
 					opacity: 0.3,
+					duration: 1,
+				},
+				{
+					layer: "bodycam-all",
+					opacity: 0.2,
 					duration: 1,
 				},
 				{

@@ -1,4 +1,4 @@
-var layerTypes = {
+const layerTypes = {
 	fill: ["fill-opacity"],
 	line: ["line-opacity"],
 	circle: ["circle-opacity", "circle-stroke-opacity"],
@@ -8,7 +8,7 @@ var layerTypes = {
 	heatmap: ["heatmap-opacity"],
 };
 
-var alignments = {
+const alignments = {
 	left: "lefty",
 	center: "centered",
 	right: "righty",
@@ -16,16 +16,16 @@ var alignments = {
 };
 
 function getLayerPaintType(layer) {
-	var layerType = map.getLayer(layer).type;
+	let layerType = map.getLayer(layer).type;
 	return layerTypes[layerType];
 }
 
 function setLayerOpacity(layer) {
-	var paintProps = getLayerPaintType(layer.layer);
+	let paintProps = getLayerPaintType(layer.layer);
 	paintProps.forEach(function (prop) {
-		var options = {};
+		let options = {};
 		if (layer.duration) {
-			var transitionProp = prop + "-transition";
+			let transitionProp = prop + "-transition";
 			options = { duration: layer.duration };
 			map.setPaintProperty(layer.layer, transitionProp, options);
 		}
@@ -33,22 +33,22 @@ function setLayerOpacity(layer) {
 	});
 }
 
-var story = document.getElementById("story");
-var features = document.createElement("div");
+const story = document.getElementById("story");
+const features = document.createElement("div");
 features.setAttribute("id", "features");
 
 config.chapters.forEach((record, idx) => {
-	var container = document.createElement("div");
-	var chapter = document.createElement("div");
+	let container = document.createElement("div");
+	let chapter = document.createElement("div");
 
 	if (record.title) {
-		var title = document.createElement("h3");
+		let title = document.createElement("h3");
 		title.innerText = record.title;
 		chapter.appendChild(title);
 	}
 
 	if (record.description) {
-		var story = document.createElement("p");
+		let story = document.createElement("p");
 		story.innerHTML = record.description;
 		chapter.appendChild(story);
 	}
@@ -79,7 +79,7 @@ const transformRequest = (url) => {
 	};
 };
 
-var map = new mapboxgl.Map({
+const map = new mapboxgl.Map({
 	container: "map",
 	style: config.style,
 	center: config.chapters[0].location.center,
@@ -91,7 +91,7 @@ var map = new mapboxgl.Map({
 });
 
 // instantiate the scrollama
-var scroller = scrollama();
+const scroller = scrollama();
 
 map.on("load", function () {
 	// setup the instance, pass callback functions
@@ -102,7 +102,7 @@ map.on("load", function () {
 			progress: true,
 		})
 		.onStepEnter((response) => {
-			var chapter = config.chapters.find(
+			let chapter = config.chapters.find(
 				(chap) => chap.id === response.element.id
 			);
 			response.element.classList.add("active");
@@ -115,7 +115,7 @@ map.on("load", function () {
 			}
 		})
 		.onStepExit((response) => {
-			var chapter = config.chapters.find(
+			let chapter = config.chapters.find(
 				(chap) => chap.id === response.element.id
 			);
 			response.element.classList.remove("active");

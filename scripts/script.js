@@ -22,13 +22,12 @@ d3.csv("data/bodycam-merged.csv", function (d) {
 	bodycamData = data;
 	let timeline = new Timeline();
 	timeline.selection(containerG).size(size).margins(margin).data(data);
-	// console.log(data);
 	timeline.draw();
 });
 
 // -------------------- SKIP BUTTON ---------------------
-const $link = d3
-	.select("#link")
+const skipButton = d3
+	.select("#skip-button")
 	.append("div")
 	.html('<a href="#step-14"> >>></a> SKIP TO EXPLORE ALL VIDEOS');
 
@@ -39,7 +38,8 @@ const steps = [
 	"step-3",
 	"step-4",
 	"step-5",
-	"step-6-1",
+	"step-6-1-1",
+	"step-6-1-2",
 	"step-6-2",
 	"step-7",
 	"step-8-1",
@@ -63,7 +63,7 @@ const videoG = d3.select("#video").append("g").classed("video-container", true);
 // ---------------- STEP FUNCTION -----------------
 // ---------------- FIRST STEP -----------------
 function firstStep() {
-	$link.style("visibility", "hidden");
+	skipButton.style("visibility", "hidden");
 	d3.select("#video").classed("video-explore", false);
 	videoG.selectAll("video").remove();
 	dotsG
@@ -76,7 +76,7 @@ function firstStep() {
 // ---------------- MIDDLE STEPS -----------------
 
 function stepFn() {
-	$link.style("visibility", "visible");
+	skipButton.style("visibility", "visible");
 	dotsG
 		.selectAll("circle")
 		.classed("active-circles", false)
@@ -91,14 +91,17 @@ function stepFn() {
 		);
 	// LIGHT AND DIM CIRCLES ON TIMELINE
 	currentStep = document.getElementsByClassName("active")[0].id;
+
 	let currentIndex = steps.findIndex((step) => step === currentStep);
 	let prevIndex = currentIndex === 0 ? null : currentIndex - 1;
 	prevStep = steps[prevIndex];
-	let nextIndex = currentIndex === 12 ? null : currentIndex + 1;
+	let nextIndex = currentIndex === 14 ? null : currentIndex + 1;
 	nextStep = steps[nextIndex];
+
 	let currentDots = dotsG.selectAll(`circle.${currentStep}-circles`);
 	let prevDots = dotsG.selectAll(`circle.${prevStep}-circles`);
 	let nextDots = dotsG.selectAll(`circle.${nextStep}-circles`);
+
 	currentDots
 		.classed("active-circles", true)
 		.attr("r", 6)
@@ -116,32 +119,29 @@ function stepFn() {
 	d3.select("#video").classed("video-explore", false);
 	videoG.selectAll("video").remove();
 	videoG.style("opacity", 0);
-	let videosToAdd = bodycamData.filter(
+
+	let videoToAdd = bodycamData.filter(
 		(d) => d.category === "Bodycam footage" && d.step === currentStep
 	);
-	videosToAdd = videosToAdd.sort((a, b) => a.place - b.place);
-	videosToAdd.forEach((video) => {
-		videoG.transition().duration(2000).delay(2000).style("opacity", 1);
+	if (videoToAdd.length > 0) {
+		videoG.transition().duration(2000).delay(1000).style("opacity", 1);
 		let videoEl = videoG
 			.append("video")
 			.attr("controls", true)
 			.attr("muted", true)
-			.attr(
-				"width",
-				videosToAdd.length > 1 ? 0.33 * windowW : 0.45 * windowW
-			);
+			.attr("width", 0.45 * windowW);
 		videoEl
 			.append("source")
-			.attr("src", video.src)
+			.attr("src", videoToAdd[0].src)
 			.attr("type", "video/mp4");
-	});
+	}
 }
 
 // ------------------- FOR LAST STEP --------------------
 
-function exploreMore() {
+function exploreMoreVideos() {
+	skipButton.style("visibility", "hidden");
 	d3.select("#step-15").select(".dark").style("padding", 0);
-	$link.style("visibility", "hidden");
 	d3.select("#chart").style("z-index", 99);
 	dotsG
 		.selectAll("circle")
