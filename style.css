@@ -112,6 +112,7 @@ article {
 /* ---------- TIMELINE ---------- */
 #chart {
 	height: 100px;
+	background: black;
 	position: sticky;
 	left: 0;
 	top: 0;
@@ -131,9 +132,11 @@ article {
 
 #video {
 	width: 500px;
+	background: black;
 	position: sticky;
-	top: 17vh;
-	left: 50px;
+	top: 0;
+	left: 0;
+	z-index: 99;
 }
 
 video {
@@ -230,4 +233,15 @@ video {
 .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan
 	.mapboxgl-canvas {
 	touch-action: unset;
+}
+
+@media (max-width: 576px) {
+	#skip-button {
+		display: none;
+	}
+
+	#map {
+		height: 60vh;
+		top: 40vh;
+	}
 }
