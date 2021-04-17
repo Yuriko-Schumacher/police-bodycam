@@ -58,7 +58,6 @@ let nextStep = "step-2";
 
 const dotsG = d3.select(".time-container");
 const video = d3.select("#video");
-console.log(windowH);
 video
 	.style("top", window > 576 ? `${0.17 * windowH}px` : "100px")
 	.style("left", window > 576 ? "50px" : 0);

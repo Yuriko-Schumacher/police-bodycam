@@ -131,8 +131,6 @@ article {
 /* ---------- VIDEO ---------- */
 
 #video {
-	width: 500px;
-	background: black;
 	position: sticky;
 	top: 0;
 	left: 0;
@@ -238,6 +236,10 @@ video {
 @media (max-width: 576px) {
 	#skip-button {
 		display: none;
+	}
+
+	#video {
+		background: black;
 	}
 
 	#map {
