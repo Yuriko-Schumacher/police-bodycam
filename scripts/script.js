@@ -18,7 +18,6 @@ d3.csv("data/bodycam-merged.csv", function (d) {
 	d.vidId = d.src.slice(19, 21);
 	return d;
 }).then(function (data) {
-	console.log(data);
 	bodycamData = data;
 	let timeline = new Timeline();
 	timeline.selection(containerG).size(size).margins(margin).data(data);
