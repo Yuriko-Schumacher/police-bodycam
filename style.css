@@ -240,7 +240,7 @@ video {
 	touch-action: unset;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 750px) {
 	.title {
 		width: 80%;
 		margin: 2em auto;

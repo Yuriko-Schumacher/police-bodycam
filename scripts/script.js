@@ -59,8 +59,8 @@ let nextStep = "step-2";
 const dotsG = d3.select(".time-container");
 const video = d3.select("#video");
 video
-	.style("top", window > 576 ? `${0.17 * windowH}px` : "100px")
-	.style("left", window > 576 ? "50px" : 0);
+	.style("top", windowW > 750 ? `${0.17 * windowH}px` : "100px")
+	.style("left", windowW > 750 ? "50px" : 0);
 const videoG = video.append("g").classed("video-container", true);
 
 // ---------------- STEP FUNCTION -----------------
@@ -79,7 +79,7 @@ function firstStep() {
 // ---------------- MIDDLE STEPS -----------------
 
 function stepFn() {
-	if (windowW <= 576) {
+	if (windowW <= 750) {
 		d3.select("#chart").style("opacity", 1);
 		d3.select("#map").style("opacity", 1);
 		d3.select("#step-14").style("display", "none");
@@ -138,7 +138,7 @@ function stepFn() {
 			.append("video")
 			.attr("controls", true)
 			.attr("muted", true)
-			.attr("width", windowW > 576 ? 0.45 * windowW : windowW - 20);
+			.attr("width", windowW > 750 ? 0.45 * windowW : windowW - 20);
 		videoEl
 			.append("source")
 			.attr("src", videoToAdd[0].src)
@@ -149,7 +149,7 @@ function stepFn() {
 // ------------------- FOR LAST STEP --------------------
 
 function exploreMoreVideos() {
-	if (windowW <= 576) {
+	if (windowW <= 750) {
 		d3.select("#chart").style("opacity", 0);
 		d3.select("#map").style("opacity", 0);
 	} else {
@@ -255,7 +255,7 @@ function exploreMoreVideos() {
 						.append("video")
 						.attr("controls", true)
 						.attr("muted", true)
-						.attr("width", windowW < 1500 ? 600 : 800);
+						.attr("width", windowW < 1500 ? windowW * 0.4 : 800);
 					videoEl
 						.append("source")
 						.attr("src", d.src)
