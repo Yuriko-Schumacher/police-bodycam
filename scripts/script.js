@@ -82,6 +82,8 @@ function stepFn() {
 	if (windowW <= 576) {
 		d3.select("#chart").style("opacity", 1);
 		d3.select("#map").style("opacity", 1);
+		d3.select("#step-14").style("display", "none");
+		d3.select("#step-15").style("display", "none");
 	}
 	skipButton.style("visibility", "visible");
 	dotsG
@@ -150,8 +152,6 @@ function exploreMoreVideos() {
 	if (windowW <= 576) {
 		d3.select("#chart").style("opacity", 0);
 		d3.select("#map").style("opacity", 0);
-		d3.select("#step-14").style("display", "none");
-		d3.select("#step-15").style("display", "none");
 	} else {
 		skipButton.style("visibility", "hidden");
 		d3.select("#step-15").select(".dark").style("padding", 0);

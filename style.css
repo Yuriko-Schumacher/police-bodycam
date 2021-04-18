@@ -44,6 +44,7 @@ a:hover {
 #hero {
 	height: 100vh;
 	display: flex;
+	flex-direction: column;
 	justify-content: center;
 	align-items: center;
 }
@@ -52,9 +53,14 @@ a:hover {
 	position: absolute;
 }
 
+.hero__mobileImage__container {
+	display: none;
+}
+
 .title {
 	width: 30%;
 	text-align: center;
+	background: rgba(0, 0, 0, 0.3);
 }
 
 .fa-angle-down {
@@ -143,6 +149,7 @@ video {
 
 .video-explore {
 	transform: translate(50vw, 30vh);
+	width: 45%;
 }
 
 /* ---------- MAP SECTION ---------- */
@@ -234,6 +241,21 @@ video {
 }
 
 @media (max-width: 576px) {
+	.title {
+		width: 80%;
+		margin: 2em auto;
+	}
+
+	.hero__mobileImage__container {
+		display: inline;
+		width: 90%;
+		margin: 0 auto;
+	}
+
+	.hero__mobileImage__container > img {
+		width: 49%;
+	}
+
 	#skip-button {
 		display: none;
 	}

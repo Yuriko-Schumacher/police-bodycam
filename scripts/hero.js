@@ -2,7 +2,7 @@ const windowH = document.querySelector("#hero").clientHeight;
 const windowW = document.querySelector("#hero").clientWidth;
 
 // ---------- HERO PICTURES ----------
-const $hero = d3.select("#hero");
+const hero = d3.select("#hero");
 const heroImages = [
 	{
 		id: "hero__img01",
@@ -120,20 +120,22 @@ const heroImages = [
 	},
 ];
 
-const heroImagesG = $hero.append("g").classed("hero__imgG", true);
-heroImages.forEach((img, index) => {
-	heroImagesG
-		.append("img")
-		.classed("hero__img", true)
-		.attr("id", `${img.id}`)
-		.attr("src", `${img.src}`)
-		.attr("width", `${0.12 * windowW}px`)
-		.attr("alt", "bodycam thumbnail")
-		.style("opacity", 0)
-		.style("left", `${(img.x / 1440) * windowW}px`)
-		.style("top", `${(img.y / 1024) * windowH}px`)
-		.transition()
-		.duration(500)
-		.delay(index * 150 + 1000)
-		.style("opacity", 1);
-});
+if (windowW > 576) {
+	const heroImagesG = hero.append("g").classed("hero__imgG", true);
+	heroImages.forEach((img, index) => {
+		heroImagesG
+			.append("img")
+			.classed("hero__img", true)
+			.attr("id", `${img.id}`)
+			.attr("src", `${img.src}`)
+			.attr("width", `${0.12 * windowW}px`)
+			.attr("alt", "bodycam thumbnail")
+			.style("opacity", 0)
+			.style("left", `${(img.x / 1440) * windowW}px`)
+			.style("top", `${(img.y / 1024) * windowH}px`)
+			.transition()
+			.duration(500)
+			.delay(index * 150 + 1000)
+			.style("opacity", 1);
+	});
+}

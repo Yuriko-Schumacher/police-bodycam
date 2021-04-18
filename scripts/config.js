@@ -12,7 +12,7 @@ const config = {
 			description:
 				"<span class='highlighter pink-highlighter'>Peaceful protests</span> ended a little before 9 p.m.<br><br>Throughout the night, Boston Police Department posted <span class='highlighter blue-highlighter'>a series of tweets,</span> asking for people to go home.<br><br>The chart above shows the timeline of these and the <span class='highlighter yellow-highlighter'>BPD’s body camera footage</span>.",
 			location: {
-				center: [-71.03734, 42.35052],
+				center: [-71.06286, 42.35569],
 				zoom: 12,
 				pitch: 0,
 				bearing: 0,
@@ -121,7 +121,7 @@ const config = {
 			description:
 				"Organizers of one march, <a href='https://www.blackboston.org/' target='_blank'>Black Boston</a>, estimate that more than 20,000 people marched from Nubian Square to the State House.<br><br>At 6:30 p.m., <span class='highlighter pink-highlighter'>the crowds started heading north.</span><br><br>About the same time, <span class='highlighter blue-highlighter'><a href='https://twitter.com/bostonpolice/status/1267222510145323008' target='_blank'>BPD tweets asked them</a></span> for a safe and peaceful demonstration.",
 			location: {
-				center: [-71.03734, 42.35052],
+				center: [-71.06286, 42.35569],
 				zoom: 12,
 				pitch: 0,
 				bearing: 0,
@@ -147,7 +147,7 @@ const config = {
 			description:
 				"The crowds went north on Washington Street through downtown and Boston Common, reaching <span class='highlighter pink-highlighter'>the State House at 8:27 p.m.</span><br><br>They stayed there about 25 minutes. The demonstration ended before 9 p.m.",
 			location: {
-				center: [-71.03734, 42.35052],
+				center: [-71.06286, 42.35569],
 				zoom: 12,
 				pitch: 0,
 				bearing: 0,
@@ -361,7 +361,7 @@ const config = {
 			description:
 				'By this time, trains are already bypassing Park Street and Downtown Crossing stations.<br><br><span style="font-size:0.8em;"> ❌ </span> signs on the map indicates T stations being bypassed at the time.<br><br>With the area turning into a battlefield, police post two tweets, <span class="highlighter blue-highlighter"><a href="https://twitter.com/bostonpolice/status/1267269715275198464" target="_blank">urging people to vacate the area.</a></span>',
 			location: {
-				center: [-71.05203, 42.3536],
+				center: [-71.06286, 42.35569],
 				zoom: 13.72,
 				pitch: 0,
 				bearing: 0,
@@ -629,7 +629,7 @@ const config = {
 			description:
 				'<a href="https://bpdnews.com/news/2020/6/1/bpd-confirms-fifty-three-arrests-made-and-one-summons-issued-following-protests-in-boston" target="_blank">BPD announced</a> <span class="highlighter blue-highlighter">53 people were arrested</span> during the protest.<br><br><a href="https://twitter.com/MBTA/status/1267265253022277635" target="_blank">MBTA said</a> by the end of the night, trains were bypassing twelve T stations around the area.',
 			location: {
-				center: [-71.05203, 42.3536],
+				center: [-71.06286, 42.35569],
 				zoom: 13.72,
 				pitch: 0,
 				bearing: 0,
@@ -843,7 +843,7 @@ const config = {
 			description:
 				"Click time stamps above to watch more video footage from the night.",
 			location: {
-				center: [-71.05203, 42.3536],
+				center: [-71.05045, 42.35585],
 				zoom: 13.72,
 				pitch: 0,
 				bearing: 0,
@@ -987,9 +987,9 @@ const config = {
 		},
 		{
 			id: "step-15",
-			alignment: "full",
+			alignment: "right",
 			location: {
-				center: [-71.05203, 42.3536],
+				center: [-71.05045, 42.35585],
 				zoom: 13.72,
 				pitch: 0,
 				bearing: 0,
